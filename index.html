@@ -3,113 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>環境負荷量與族群成長模擬器 - 模型選擇</title>
+  <title>環境負荷量與族群成長模擬器</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #111111;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 30px 20px;
     }
-    .portal-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      max-width: 600px;
+    .wrapper {
+      max-width: 540px;
       width: 100%;
-      padding: 42px 36px;
       text-align: center;
     }
-    .portal-title {
+    h1 {
       font-size: 24px;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 12px;
+      font-weight: 600;
+      color: #111111;
       letter-spacing: -0.4px;
+      margin-bottom: 12px;
     }
-    .portal-desc {
+    p.description {
       font-size: 14px;
-      color: #64748b;
+      color: #666666;
       line-height: 1.6;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
-    .button-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 540px) {
-      .button-grid { grid-template-columns: 1fr; }
-    }
-    .model-btn {
+    .navigation-links {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      gap: 16px;
       justify-content: center;
-      padding: 26px 20px;
-      border-radius: 10px;
+    }
+    @media (max-width: 480px) {
+      .navigation-links {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+    .nav-btn {
+      flex: 1;
+      display: block;
+      padding: 16px 20px;
+      background: #f7f7f8;
+      border: 1px solid #e5e5e7;
+      border-radius: 8px;
       text-decoration: none;
-      transition: all 0.18s ease;
-      border: 1.5px solid #e2e8f0;
-      background: #f8fafc;
-      color: #1e293b;
+      color: #111111;
+      transition: background 0.15s, border-color 0.15s;
+      text-align: center;
     }
-    .model-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(37,99,235,0.12);
-      border-color: #2563eb;
-      background: #ffffff;
+    .nav-btn:hover {
+      background: #f0f0f2;
+      border-color: #cccccc;
     }
-    .model-btn.discrete:hover {
-      box-shadow: 0 8px 20px rgba(225,29,72,0.12);
-      border-color: #e11d48;
+    .nav-btn .title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111111;
     }
-    .btn-badge {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-    }
-    .badge-continuous { background: #dbeafe; color: #1d4ed8; }
-    .badge-discrete { background: #ffe4e6; color: #be123c; }
-    .btn-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #0f172a;
-    }
-    .btn-sub {
+    .nav-btn .subtitle {
       font-size: 12px;
-      color: #64748b;
-      line-height: 1.45;
+      color: #777777;
     }
   </style>
 </head>
 <body>
 
-<div class="portal-card">
-  <h1 class="portal-title">環境負荷量與族群成長模擬器</h1>
-  <p class="portal-desc">歡迎使用族群成長與採收模擬器。<br>請選擇您欲互動探索的數學模型：</p>
+<div class="wrapper">
+  <h1>環境負荷量與族群成長模擬器</h1>
+  <p class="description">歡迎使用族群成長與採收模擬器。<br>請選擇您要使用的模型：</p>
 
-  <div class="button-grid">
-    <a href="continuous.html" class="model-btn">
-      <span class="btn-badge badge-continuous">微積分模型</span>
-      <span class="btn-title">連續型模型 (Continuous)</span>
-      <span class="btn-sub">以 dN/dt 微分方程模擬<br>呈現平滑 S 型成長曲線</span>
+  <div class="navigation-links">
+    <a href="continuous.html" class="nav-btn">
+      <div class="title">連續型模型</div>
+      <div class="subtitle">微積分 dN/dt 導向</div>
     </a>
 
-    <a href="discrete.html" class="model-btn discrete">
-      <span class="btn-badge badge-discrete">世代迭代模型</span>
-      <span class="btn-title">離散型模型 (Discrete)</span>
-      <span class="btn-sub">以 N<sub>t+1</sub> 差分方程模擬<br>可探索超越震盪與混沌 (Chaos)</span>
+    <a href="discrete.html" class="nav-btn">
+      <div class="title">離散型模型</div>
+      <div class="subtitle">世代 N<sub>t+1</sub> 迭代導向</div>
     </a>
   </div>
 </div>
