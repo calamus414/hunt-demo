@@ -62,8 +62,6 @@
     .preset-group { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 6px; }
     .preset-btn { font-size: 11px; padding: 4px 6px; border: 1px solid #d0d0d0; background: #fafafa; border-radius: 3px; cursor: pointer; color: #444; text-align: center; transition: all 0.12s; }
     .preset-btn:hover { background: #e8f4fc; border-color: #337ab7; color: #337ab7; }
-    .preset-btn.chaos { background: #fef2f2; border-color: #fca5a5; color: #991b1b; font-weight: 600; }
-    .preset-btn.chaos:hover { background: #fee2e2; border-color: #ef4444; }
     .sep { border: none; border-top: 1px solid #ececec; margin: 10px 0; }
     .diag-box { background: #f8f8f8; border: 1px solid #e2e2e2; border-radius: 3px; padding: 10px 12px; font-size: 12px; line-height: 1.75; margin-top: 12px; }
     .diag-title { font-weight: 700; font-size: 12px; color: #337ab7; margin-bottom: 4px; }
@@ -171,7 +169,7 @@
               <button type="button" class="preset-btn" onclick="setPresetR('p', 0.2)">S型 (0.2)</button>
               <button type="button" class="preset-btn" onclick="setPresetR('p', 1.6)">震盪 (1.6)</button>
               <button type="button" class="preset-btn" onclick="setPresetR('p', 2.3)">週期 (2.3)</button>
-              <button type="button" class="preset-btn chaos" onclick="setPresetR('p', 2.8)">混沌 (2.8)</button>
+              <button type="button" class="preset-btn" onclick="setPresetR('p', 2.8)">混沌 (2.8)</button>
             </div>
           </div>
           <div class="form-group">
@@ -481,15 +479,15 @@ function updateProp() {
     html+=`<div>• 穩定平衡點 (有效負荷量 K')：<strong class="t-warning">${Math.round(effK).toLocaleString()}</strong> 隻</div>`;
     const netR = r - h;
     if(netR >= 3.0) {
-      html+=`<div class="t-danger" style="margin-top:4px;">💥 狀態：<span class="t-danger">暴縮滅絕！r過高致世代人口暴增超界後瞬間崩潰。</span></div>`;
+      html+=`<div class="t-danger" style="margin-top:4px;">狀態：<span class="t-danger">暴縮滅絕！r過高致世代人口暴增超界後瞬間崩潰。</span></div>`;
     } else if(netR > 2.57) {
-      html+=`<div class="t-danger" style="margin-top:4px;">🌀 狀態：<span class="t-danger">確定性混沌 (Chaos)！族群無規律劇烈跳躍。</span></div>`;
+      html+=`<div class="t-danger" style="margin-top:4px;">狀態：<span class="t-danger">確定性混沌 (Chaos)！族群無規律劇烈跳躍。</span></div>`;
     } else if(netR > 2.0) {
-      html+=`<div class="t-warning" style="margin-top:4px;">🔄 狀態：<span class="t-warning">週期性倍增跳躍 (Period-Doubling)。</span></div>`;
+      html+=`<div class="t-warning" style="margin-top:4px;">狀態：<span class="t-warning">週期性倍增跳躍 (Period-Doubling)。</span></div>`;
     } else if(netR > 1.0) {
-      html+=`<div class="t-teal" style="margin-top:4px;">🌊 狀態：<span class="t-teal">超越 K' 阻尼震盪 (Overshooting)。</span></div>`;
+      html+=`<div class="t-teal" style="margin-top:4px;">狀態：<span class="t-teal">超越 K' 阻尼震盪 (Overshooting)。</span></div>`;
     } else {
-      html+=`<div class="t-success" style="margin-top:4px;">🌱 狀態：<span class="t-success">平滑趨近穩定平衡點。</span></div>`;
+      html+=`<div class="t-success" style="margin-top:4px;">狀態：<span class="t-success">平滑趨近穩定平衡點。</span></div>`;
     }
   } else {
     html+=`<div>• 穩定平衡點 (有效負荷量 K')：<strong class="t-danger">0（族群滅絕）</strong></div><div>• 狀態：<span class="t-danger">h ≥ r，族群將完全滅絕！</span></div>`;
@@ -545,7 +543,7 @@ function updateConst() {
     if(N2&&N2>0){
       html+=`<div>• 滅絕臨界線 N₂*：<strong class="t-warning">${Math.round(N2).toLocaleString()}</strong></div>`;
       if(N0<N2) html+=`<div class="t-danger">N₀ 已低於崩潰臨界點，族群將走向滅絕！</div>`;
-      else if(r>2.57) html+=`<div class="t-danger" style="margin-top:4px;">🌀 狀態：確定性混沌 (Chaos) 波動中！</div>`;
+      else if(r>2.57) html+=`<div class="t-danger" style="margin-top:4px;">狀態：確定性混沌 (Chaos) 波動中！</div>`;
       else html+=`<div class="t-success">N₀ 高於臨界線，將安全趨近穩定平衡。</div>`;
     }
   }
