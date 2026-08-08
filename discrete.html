@@ -461,7 +461,7 @@ function updateProp() {
     {label:'當前族群 N', data:val, borderColor:'#2563eb', borderWidth:2.5, pointRadius:0, tension:0.15},
     {label:'原始負荷量 K', data:Array(n).fill(K), borderColor:'#c0392b', borderWidth:1.5, borderDash:[7,5], pointRadius:0, tension:0}
   ];
-  if(r>h&&h>0) ds.push({label:"穩定平衡點 K' (有效負荷量)", data:Array(n).fill(effK), borderColor:'#e67e22', borderWidth:1.5, borderDash:[4,4], pointRadius:0, tension:0});
+  if(r>h&&h>0) ds.push({label:"穩定平衡點 K' (有效負荷量)", data:Array(n).fill(effK), borderColor:'#16a085', borderWidth:1.5, borderDash:[4,4], pointRadius:0, tension:0});
   if(propChart){propChart.destroy();propChart=null;}
   propChart=new Chart(document.getElementById('p-chart').getContext('2d'),{
     type:'line', data:{labels:lbl,datasets:ds},
@@ -476,7 +476,7 @@ function updateProp() {
   });
   let html=`<div>• 原始負荷量 (K)：<strong>${K.toLocaleString()}</strong> 隻</div>`;
   if(r>h){
-    html+=`<div>• 穩定平衡點 (有效負荷量 K')：<strong class="t-warning">${Math.round(effK).toLocaleString()}</strong> 隻</div>`;
+    html+=`<div>• 穩定平衡點 (有效負荷量 K')：<strong class="t-teal">${Math.round(effK).toLocaleString()}</strong> 隻</div>`;
     const netR = r - h;
     if(netR >= 3.0) {
       html+=`<div class="t-danger" style="margin-top:4px;">狀態：<span class="t-danger">暴縮滅絕！r過高致世代人口暴增超界後瞬間崩潰。</span></div>`;
